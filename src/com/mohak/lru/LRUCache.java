@@ -56,7 +56,7 @@ public class LRUCache {
 		linkedList.setHeadNode(node);
 		
 		//if there is 1 node in the list it is the head as well as tail
-		if(linkedList.getTailNode() != null)
+		if(linkedList.getTailNode() == null)
 			linkedList.setTailNode(node);
 		
 		//we have to update the map with the node
