@@ -77,12 +77,29 @@ public class LRUCache {
 		if(this.linkedList.getTailNode() != null)
 			this.linkedList.getTailNode().setNextNode(null);
 		
-		//avoid obselete references
+		//avoid obsolete references
 		lastNode = null;
+	}
+	
+	//get the item with ID id + move to the head because we want to use this item
+	public Node get(int id) {
+		
+		//the map does not contain the item [O(1) running time!!!]
+		if(!this.map.containsKey(id)) return null;
+		
+		//the map contains the item
+		Node node = this.map.get(id);
+		//move to head (frequently visited items must be close to the head)
+		update(node);
+		return node;
 	}
 	
 	//move the given node to the front (head) of Linked List
 	private void update(Node node) {
+		
+	}
+	
+	public void show() {
 		
 	}
 }
