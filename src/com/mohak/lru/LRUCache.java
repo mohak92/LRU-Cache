@@ -43,6 +43,25 @@ public class LRUCache {
 	//add node to the head
 	private void add(Node node) {
 		
+		//the node will be the new head: so update accordingly
+		node.setNextNode(this.linkedList.getHeadNode());
+		//it is the first node: no previous node
+		node.setPreviousNode(null);
+		
+		//we have to update the previous head: point to the new head (which is the node)
+		if(linkedList.getHeadNode() != null)
+			linkedList.getHeadNode().setPreviousNode(node);
+		
+		//update the head node
+		linkedList.setHeadNode(node);
+		
+		//if there is 1 node in the list it is the head as well as tail
+		if(linkedList.getTailNode() != null)
+			linkedList.setTailNode(node);
+		
+		//we have to update the map with the node
+		this.map.put(node.getId(), node);
+		
 	}
 	
 	//remove last item (least frequently used)
