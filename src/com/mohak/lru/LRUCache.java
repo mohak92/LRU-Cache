@@ -67,6 +67,18 @@ public class LRUCache {
 	//remove last item (least frequently used)
 	private void removeTail() {
 		
+		//get node from the map
+		Node lastNode = this.map.get(this.linkedList.getTailNode().getId());
+		
+		//new tail node is the previous node (because we remove the actual one)
+		this.linkedList.setTailNode(linkedList.getTailNode().getPreviousNode());
+		
+		//set the next node to be NULL: because it is the right most item
+		if(this.linkedList.getTailNode() != null)
+			this.linkedList.getTailNode().setNextNode(null);
+		
+		//avoid obselete references
+		lastNode = null;
 	}
 	
 	//move the given node to the front (head) of Linked List
