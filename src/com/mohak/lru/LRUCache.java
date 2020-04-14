@@ -97,9 +97,34 @@ public class LRUCache {
 	//move the given node to the front (head) of Linked List
 	private void update(Node node) {
 		
+		//doubly linkedList we get the previous node and the next node
+		Node previousNode = node.getPreviousNode();
+		Node nextNode = node.getNextNode();
+		
+		//so it is a middle node in the list
+		if(previousNode != null)
+			previousNode.setNextNode(nextNode);
+		else //we know that this is the head (first node)
+			this.linkedList.setHeadNode(nextNode);
+		
+		//so not the last node
+		if(nextNode != null)
+			nextNode.setPreviousNode(previousNode);
+		else //we know it is the last node
+			this.linkedList.setTailNode(previousNode);
+		
+		//we have to move the node to the front
+		add(node);
 	}
 	
 	public void show() {
+		
+		Node actualNode = this.linkedList.getHeadNode();
+		
+		while(actualNode != null) {
+			System.out.print(actualNode + "<->");
+			actualNode = actualNode.getNextNode();
+		}
 		
 	}
 }
