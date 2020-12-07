@@ -15,5 +15,10 @@ We use two data structures to implement an LRU Cache.
 When a page is referenced, the required page may be in the memory. If it is in the memory, we need to detach the node of the list and bring it to the front of the queue. 
 If the required page is not in memory, we bring that in memory. In simple words, we add a new node to the front of the queue and update the corresponding node address in the hash. If the queue is full, i.e. all the frames are full, we remove a node from the rear of the queue, and add the new node to the front of the queue.
 
+## Local Setup
+* Git clone
+* Import in eclipse or your favorite IDE
+* Run App.java
+
 ## Built With
 * Java
